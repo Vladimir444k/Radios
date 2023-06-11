@@ -182,9 +182,9 @@ class RadioTest {
 
     @Test
     void stationsCountIsMax() {
-        Radio radio = new Radio(11);
+        Radio radio = new Radio(10);
 
-        radio.setCurrentStation(0);
+        radio.setCurrentStation(10);
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -193,9 +193,33 @@ class RadioTest {
 
     @Test
     void stationsCountIsMin() {
-        Radio radio = new Radio(-1);
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void stationsCountRunTestUp() {
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(0);
+        radio.nextStation();
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void stationsCountRunTestDown() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(9);
+        radio.prevStation();
 
         int expected = 0;
         int actual = radio.getCurrentStation();

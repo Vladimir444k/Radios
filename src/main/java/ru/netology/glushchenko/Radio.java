@@ -13,6 +13,7 @@ public class Radio {
         this.maxStation = stationsCount - 1;
     }
 
+
     public int getCurrentStation() {
         return currentStation;
     }
